@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% block main_content %}
+    <br>
+
+
+    
+
+
+    <h3>Current Students:</h3>
+    <table class="table-bordered table-striped table">
+        <thead>
+            <tr>
+                <td><b>Id</b></td>
+                <td><b>Name</b></td>
+                <td><b>Homepage</b></td>
+                <td><b>Athlete</b></td>
+                <td><b>Favorite Joke</b></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.homepage_url }}</td>
+                {% if student.is_athlete %}
+                <td>Yes</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+                <td>{{ student.favorite_joke }}</td>
+                <form action="/editdata/" method="post">
+                {% csrf_token %}
+                <td><input type="hidden" id="student_id" name="student_id" value="{{ student.id }}"><button class="btn pull-right" type="submit">
+                    Edit this entry
+                </button></td></form>
+            </tr>
+         
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <br>
+    
+
+
+
+
+{% endblock %}

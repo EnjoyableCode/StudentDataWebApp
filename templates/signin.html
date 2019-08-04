@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PC Challenge Student Data</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #B5121B; border-color: #B5121B">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6">
+            <img src="{% static 'images/signin_image.png' %}">
+        </div>
+        <div class="col-md-6">
+            <div class="col-sm-6" style="padding: 0; padding-bottom: 10px">
+                <br>
+                <br>
+                <br>
+                <img src="{% static 'images/signin.png' %}">
+            </div>
+            <br>
+            <br>
+            <br>
+            <form class="form-signin" role="form" action="/log_in/" method="post">{% csrf_token %}
+                <input type="text" class="form-control" style="border-radius: 0px" placeholder="Username" required="" autofocus="" name="username">
+                <br>
+                <input type="password" class="form-control" style="border-radius: 0px" placeholder="Password" required="" name="password">
+                <br>
+
+                <button class="btn pull-right" type="submit">
+                    Sign In
+                </button>
+            </form>
+            {% if failure == 1 %}
+                <div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Invalid Credentials!</strong> Please check your username and password.
+                </div>
+            {% endif %}
+            {% if failure == 2 %}
+                <div class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Invalid Credentials!</strong> Please check that your username is active.
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

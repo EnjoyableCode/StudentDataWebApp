@@ -1,0 +1,20 @@
+  body {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    background-color: #ffffff;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  }
+  .btn
+  {
+   outline:0;
+   border:none;
+   border-radius: 0;
+   background-color: #B5121B;
+   color: #ffffff;
+  }
+  .btn:focus
+  {
+   outline:0;
+   -webkit-outline:0;
+   -moz-outline:0;
+  }
